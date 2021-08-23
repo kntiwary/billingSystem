@@ -33,12 +33,11 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
 
-
     @property
     def nettotal(self):
         sum = 0
 
-        sum += self.total+self.gst
+        sum += self.total + self.gst
         s = round(sum, 2)
         return s
 
@@ -81,5 +80,25 @@ class Payment(models.Model):
     pass
 
 
+PAYMENT_STATUS_CHOICES = (
+    ('new', 'new'),
+    ('accepted_for_process', 'accepted for processing'),
+    ('in_progress', 'In progress'),
+    ('partially_paiu', 'partially pad'),
+    ('paid', 'paid'),
+    ('cancelled', 'cancelled'),
+    ('failed', 'failed'),
+
+)
+
+
 class Transaction(models.Model):
-    pass
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
+    status = models.CharField(max_length=32, choices=PAYMENT_STATUS_CHOICES, default='accepted_for_process')
+    created_at = models.DateTimeField(auto_now_add=True)
+    txn_status = models.CharField(max_length=32, blank=True)
+    resp_code = models.CharField(max_length=32, blank=True)
+    resp_message = models.CharField(max_length=32, blank=True)
+    payment_mode = models.CharField(max_length=32, blank=True)
+
+
