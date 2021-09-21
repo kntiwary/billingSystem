@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> THis is index  {{title}}</h1>
+{% if orders %}
+<ul>
+    {% for order in orders %}
+    <li>
+        {{order.id}}
+    </li>
+    {% endfor%}
+</ul>
+
+
+{% endif %}
+
+{% endblock content %}

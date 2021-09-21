@@ -3,7 +3,6 @@ from rest_framework import serializers
 
 from order.models import Item, Order, Customer, OrderShip, OrderItem
 
-
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
@@ -86,3 +85,17 @@ class OrderDetailSerializer(serializers.ModelSerializer):
         fields = ('id', 'paid', 'payment_mode', 'orders', 'total', 'gst', 'nettotal')
 
         depth = 1
+
+
+# class CompanySerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Company
+#         fields = '__all__'
+#
+#
+# class EmployeeSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Employee
+#         fields = '__all__'
+#
+#

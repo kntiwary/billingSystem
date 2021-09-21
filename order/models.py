@@ -1,4 +1,5 @@
 from datetime import datetime
+from time import timezone
 
 from django.contrib.auth.models import User
 from django.db import models
@@ -77,6 +78,9 @@ class Tax(models.Model):
 
 
 class Payment(models.Model):
+    """
+    gatewy name
+    """
     pass
 
 
@@ -102,3 +106,13 @@ class Transaction(models.Model):
     payment_mode = models.CharField(max_length=32, blank=True)
 
 
+# class Company(models.Model):
+#     f_name = models.Charfield(max_lenght=32)
+#
+#
+# class Employee(models.Model):
+#     f_name = models.CharField(max_lenght=32)
+#     l_name = models.CharField(max_length=32)
+#     created_at = models.DateTimeField(default=timezone.now)
+#     updated_at = models.DateTimeField(default=timezone.now)
+#     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='employees', help_text="company")
