@@ -2,12 +2,19 @@
 
 {% block content %}
 
-<h1> THis is index  {{title}}</h1>
+<h1> THis is  {{title}} page</h1>
+<!--<img src="images/loo.jpeg">-->
+{% load static %}
+<!--<img src="{% static 'temp/foo1.jpeg' %}" alt="one">-->
+<a  href="/temp/{{markers}}/details/">{{order.id}}
+<img id="A" src="{% static 'images/temp/loo.jpeg' %}" alt="two">
+</a>
 {% if orders %}
 <ul>
     {% for order in orders %}
     <li>
-        {{order.id}}
+        <a  href="/temp/{{order.id}}/details/">{{order.id}}</a>
+        <button type="button" class="btn btn-success" >get</button>
     </li>
     {% endfor%}
 </ul>
